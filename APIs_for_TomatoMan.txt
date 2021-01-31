@@ -1,0 +1,108 @@
+1) http://127.0.0.1:8000/items/items/
+GET API - to get the list of all items
+
+
+
+2)http://127.0.0.1:8000/items/customer/
+POST API - to post the address of customer to database
+[BODY JSON EXAMPLE
+
+{
+    "fullname": "Kumar Vishwas",
+    "address": "184, lig square,indore",
+    "landmark": "near sai mandir",
+    "mobile": "7867002312"
+        
+    }
+JSON RESPONSE
+
+[
+    {
+        "fullname": "Raman",
+        "mobile": "7821000312",
+        "address": "184 lig square indore",
+        "landmark": "near krishna mandir"
+    }
+]
+
+
+
+
+
+
+3)http://127.0.0.1:8000/items/address_api/mobile/
+POST API - to post a mobile number to get customer adress details
+[BODY JSON EXAMPLE -
+{
+    "mobile": "7878121201"
+} ]
+
+
+
+RESPONSE
+
+[
+    {
+        "fullname": "Sidhharth Jain",
+        "mobile": "7878121201",
+        "address": "78, LIG Chouraha",
+        "landmark": "near palasia"
+    }
+]
+
+
+
+
+
+4)http://127.0.0.1:8000/items/order_api/mobile/
+POST API - to post a mobile number to get customer order details (this is created to get the history of order via
+mobile number of logged in user.)
+[BODY JSON EXAMPLE -
+{
+    "customer_id": "7878121201"
+} ]
+
+RESPONSE
+
+[
+    {
+        "id": 9,
+        "customer": "7878121201",
+        "date": "2021-01-29T11:30:11+05:30",
+        "payment_mode": "Pay On Delivery",
+        "payment_status": "Received",
+        "total_amount": "180"
+    }
+]
+
+
+
+5)http://127.0.0.1:8000/items/place_order/
+POST API - to post the oder details of the customer from the final checkout page.
+[BODY JSON EXAMPLE -
+
+{
+        "order": {
+        "customer": "7878121201",
+        "date": "2021-01-29T06:00:11Z",
+        "payment_mode": "Pay On Delivery",
+        "payment_status": "Received",
+        "total_amount": "1700"
+    },
+    "items": [
+        {
+        "item": "Tomato",
+        "price": 400,
+        "quantity": 5 
+        }, {
+        "item": "Potato",
+        "price": 10,
+        "quantity": 2 
+        } ]
+    }
+    
+
+
+RESPONSE
+
+{}

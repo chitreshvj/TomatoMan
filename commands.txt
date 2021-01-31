@@ -1,0 +1,53 @@
+[[  to clean-up media file
+used django-cleanup in installed apps in setting.py
+]]
+
+https://ilovedjango.com/django/admin/how-to-show-image-from-imagefield-in-django-admin-page/
+
+[[ to get JSON data in model class object
+  pip install jsonfield
+
+from picklefield.fields import PickledObjectField
+>>> class SomeObject(models.Model):
+>>>     args = PickledObjectField()
+
+]]
+
+
+pip install Pillow
+pip install django-cors-headers
+
+pip install djangorestframework
+pip install markdown # Markdown
+support for the browsable API.
+pip install django-filter #
+Filtering support
+
+order table
+-order id
+-customer(fk custoemr)
+-date
+- payment mode
+-payment status
+- total amount
+
+
+ and
+
+ order item table(order)
+- order id(fk order table)
+- item id(fk item table  )
+- price()
+
+-quant()
+-
+
+
+
+
+{
+            "fullname": "rajesh Roshan",
+            "mobile":"7878121201",
+            "address": "197,scheme no 78",
+            "landmark": "near sbi bank"
+        }

@@ -1,0 +1,26 @@
+<html>
+<head>
+<title> Address </title>
+
+</head>
+
+<form action="../cust_address/" method="POST">
+    {% csrf_token %}
+    Name : <input type="text" name="fullname" value="" /><br><br>
+    Mobile Number : <input type="text" name="mobile" value="" /><br><br>
+    Pincode <input type="text" name="pincode" value="1" /> <br><br>
+    Address <input type="text" name="address" value="1" /> <br><br>
+    City <input type="text" name="city" value="1" /> <br> <br>
+
+    <input type="submit" name="submit" value="Make Payment" /><br><br>
+
+    
+{% if message %}
+<h3> {{message}} </h3>
+{% endif %}
+
+</form>
+
+<br><br><a href='../' > Back</a> <br>
+
+</html>
