@@ -86,7 +86,7 @@ POST API - to post the oder details of the customer from the final checkout page
         "customer": "7878121201",
         "date": "2021-01-29T06:00:11Z",
         "payment_mode": "Pay On Delivery",
-        "payment_status": "Received",
+        "payment_status": "Pending",
         "total_amount": "1700"
     },
     "items": [
