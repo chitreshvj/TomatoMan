@@ -1,23 +1,15 @@
 from django.contrib import admin
-
+from django.utils.html import format_html
 
 
 # Register your models here.
-from .models import ItemDetails, CustomerDetails , OrderDetails , OrderItemDetails
+from .models import ItemDetail, CustomerDetail , OrderDetail , OrderItemDetail
 
+class ItemDetailAdmin(admin.ModelAdmin):
+    
+    list_display = ('name', 'price', 'category', 'status', 'image_tag')
 
-# class ItemAdmin(admin.ModelAdmin):
-#     list_display = ('name','image_preview')
-#     readonly_fields = ('image_preview',)
-
-#     def image_preview(self, obj):
-#         return obj.image_preview
-
-#     image_preview.short_description = 'Image Preview'
-#     image_preview.allow_tags = True
-
-
-admin.site.register(ItemDetails)
-admin.site.register(OrderDetails)
-admin.site.register(OrderItemDetails)
-admin.site.register(CustomerDetails)
+admin.site.register(ItemDetail,ItemDetailAdmin)
+admin.site.register(OrderDetail)
+admin.site.register(OrderItemDetail)
+admin.site.register(CustomerDetail)
