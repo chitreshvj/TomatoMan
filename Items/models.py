@@ -1,9 +1,7 @@
 from django.db import models
 from django.db.models import Model
-from django.utils.html import mark_safe
+from django.utils.safestring import mark_safe
 from django.utils import timezone
-from jsonfield import JSONField
-from picklefield.fields import PickledObjectField
 import os
 from uuid import uuid4
 
@@ -15,33 +13,26 @@ def path_and_rename(instance, filename):
     return os.path.join(upload_to, filename)
 
 
-# class LoginDetails(models.Model):
-#     mobile = models.IntegerField(default=0)
-
-#     def __str__(self):
-#         return ('Mobile :{mobile}'.format(mobile=self.mobile))
-
-
-
-
-class ItemDetails(models.Model):
+class ItemDetail(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
     price = models.IntegerField(default=0)
     category = models.CharField(max_length=20, choices=[('Fruits', 'Fruits'), ('Vegetable', 'Vegetable')])
     status = models.CharField(max_length=20 ,choices=[(' ', ' In stock') , ('Out Of Stock', 'out of stock')])
     image = models.ImageField(upload_to=path_and_rename)
-    # @property
-    # def image_preview(self):
-    #     if self.image:
-    #         return mark_safe('<img src="{}" width="300" height="300" />'.format(self.image.url))
-    #     return ""
+
+    def image_tag(self):
+        if self.image:
+            return mark_safe('<img src="%s" style="width: 45px; height:45px;" />' % self.image.url)
+        else:
+            return 'No Image Found'
+    image_tag.short_description = 'Image'
     
     def __str__(self):
         return ('Name: {name} Price: {price} Category: {category} Status: {status} Image: {image}' \
         .format(name = self.name, price= self.price , category= self.category,status= self.status, image = self.image))
 
 
-class CustomerDetails(models.Model):
+class CustomerDetail(models.Model):
     fullname = models.CharField(max_length=100)
     mobile = models.CharField(max_length=12, primary_key=True)
     address = models.CharField(max_length=1000)
@@ -55,22 +46,22 @@ class CustomerDetails(models.Model):
 
 
 
-class OrderDetails(models.Model):
-    customer = models.ForeignKey(CustomerDetails, on_delete = models.CASCADE)
+class OrderDetail(models.Model):
+    customer = models.ForeignKey(CustomerDetail, on_delete = models.CASCADE)
     date = models.DateTimeField('date published',default=timezone.now())
     payment_mode = models.CharField(max_length=100 ,choices=[('Pay On Delivery', 'Pay On Delivery') , ('UPI', 'UPI'),('Net Banking', 'Net Banking'),('Credit Card/Debit Card', 'Credit Card/Debit Card')],default='Pay On Delivery')
     payment_status = models.CharField(max_length=100 ,choices=[('Pending', 'Pending') , ('Received', 'Received')],default="Pending")
     total_amount = models.CharField(max_length=20)
 
     def __str__(self):
-        return ('Customer: {customer} Date: {date} Payment Mode {payment_mode} Payment Status {payment_status} Total {total}'
+        return ('Customer: {customer} Date: {date} Payment Mode {payment_mode} Payment Status {payment_status} Total {total_amount}'
         .format(customer = self.customer , date = self.date , payment_mode = self.payment_mode , payment_status = self.payment_status , total_amount = self.total_amount) )
 
 
 
-class OrderItemDetails(models.Model):
-    order = models.ForeignKey(OrderDetails , on_delete = models.CASCADE)
-    item = models.ForeignKey(ItemDetails , on_delete = models.CASCADE)
+class OrderItemDetail(models.Model):
+    order = models.ForeignKey(OrderDetail , on_delete = models.CASCADE)
+    item = models.ForeignKey(ItemDetail , on_delete = models.CASCADE)
     price = models.IntegerField(default=0)
     quantity = models.IntegerField(default=0)
 

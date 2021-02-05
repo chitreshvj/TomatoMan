@@ -1,9 +1,9 @@
-1) http://127.0.0.1:8000/items/items/
+1) http://tomatoman.pythonanywhere.com/items/items/
 GET API - to get the list of all items
 
 
 
-2)http://127.0.0.1:8000/items/customer/
+2)http://tomatoman.pythonanywhere.com/items/customer/
 POST API - to post the address of customer to database
 [BODY JSON EXAMPLE
 
@@ -30,7 +30,7 @@ JSON RESPONSE
 
 
 
-3)http://127.0.0.1:8000/items/address_api/mobile/
+3)http://tomatoman.pythonanywhere.com/items/address_api/mobile/
 POST API - to post a mobile number to get customer adress details
 [BODY JSON EXAMPLE -
 {
@@ -54,7 +54,7 @@ RESPONSE
 
 
 
-4)http://127.0.0.1:8000/items/order_api/mobile/
+4)http://tomatoman.pythonanywhere.com/items/order_api/mobile/
 POST API - to post a mobile number to get customer order details (this is created to get the history of order via
 mobile number of logged in user.)
 [BODY JSON EXAMPLE -
@@ -77,7 +77,7 @@ RESPONSE
 
 
 
-5)http://127.0.0.1:8000/items/place_order/
+5)http://tomatoman.pythonanywhere.com/items/place_order/
 POST API - to post the oder details of the customer from the final checkout page.
 [BODY JSON EXAMPLE -
 

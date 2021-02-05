@@ -1,38 +1,21 @@
-from Items.models import ItemDetails , CustomerDetails , OrderDetails , OrderItemDetails
-# ,LoginDetails,OrderDetails
+from Items.models import ItemDetail , CustomerDetail , OrderDetail , OrderItemDetail
 from rest_framework import serializers
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ItemDetails
+        model = ItemDetail
         fields = ['name', 'price', 'category','status','image']
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomerDetails
+        model = CustomerDetail
         fields = ['fullname','mobile',  'address' , 'landmark']
-
-# class OrderSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = CustomerDetails
-#         fields = ['customer_details','name','price', 'date', 'quantity','order_status']
-
-
-# class OrderSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = CustomerDetails
-#         fields = ['customer_details', 'order_details' , 'date' , 'order_status' ]
-
-# class LoginSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = LoginDetails
-#         fields = ['mobile']
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = OrderDetails
+        model = OrderDetail
         fields = ['id','customer', 'date' , 'payment_mode' , 'payment_status', 'total_amount']
 
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = OrderItemDetails
+        model = OrderItemDetail
         fields = ['order', 'item' , 'price' , 'quantity']
